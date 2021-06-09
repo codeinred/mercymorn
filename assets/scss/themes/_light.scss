@@ -2,6 +2,13 @@
 
 @mixin light-theme {
     --theme-name: "light";
+
+    @include defineColorHSL(--color-accent-darker, 0, 100%, 27%);
+    @include defineColorHSL(--color-accent-dark, 0, 100%, 37%);
+    @include defineColorHSL(--color-accent, 0, 100%, 47%);
+    @include defineColorHSL(--color-accent-light, 0, 100%, 57%);
+    @include defineColorHSL(--color-accent-lighter, 0, 100%, 67%);
+
     @include defineColorHSL(--color-primary, $primaryColorLightH, $primaryColorLightS, $primaryColorLightL);
     @include defineColorHSL(--color-bg, 0, 0%, 100%);
     @include defineColorHSL(--color-contrast-lower, 0, 0%, 95%);

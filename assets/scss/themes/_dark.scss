@@ -3,13 +3,19 @@
 
 @mixin dark-theme {
     --theme-name: "dark";
+    @include defineColorHSL(--color-accent-darker, 210, 33%, 20%);
+    @include defineColorHSL(--color-accent-dark, 210, 33%, 30%);
+    @include defineColorHSL(--color-accent, 210, 33%, 40%);
+    @include defineColorHSL(--color-accent-light, 210, 33%, 50%);
+    @include defineColorHSL(--color-accent-lighter, 210, 33%, 60%);
+
     @include defineColorHSL(--color-primary, $primaryColorDarkH, $primaryColorDarkS, $primaryColorDarkL);
-    @include defineColorHSL(--color-bg, 231, 14%, 10%);
-    @include defineColorHSL(--color-contrast-lower, 230, 12%, 18%);
-    @include defineColorHSL(--color-contrast-low, 240, 2%, 37%);
-    @include defineColorHSL(--color-contrast-medium, 80, 2%, 69%);
-    @include defineColorHSL(--color-contrast-high, 69, 9%, 84%);
-    @include defineColorHSL(--color-contrast-higher, 60, 6%, 90%);
+    @include defineColorHSL(--color-bg, 210, 33%, 13%);
+    @include defineColorHSL(--color-contrast-lower, 211, 25%, 17%);
+    @include defineColorHSL(--color-contrast-low, 212, 15%, 26%);
+    @include defineColorHSL(--color-contrast-medium, 215, 6%, 58%);
+    @include defineColorHSL(--color-contrast-high, 220, 5%, 89%);
+    @include defineColorHSL(--color-contrast-higher, 0, 0%, 100%);
     .theme-icon-light {
         display: none;
     }
@@ -17,7 +23,7 @@
         display: inline-block;
     }
     img {
-        filter: brightness(75%);
+        filter: brightness(80%);
     }
 
     @if ($enableHighlight) {
