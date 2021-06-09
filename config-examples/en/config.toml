@@ -83,7 +83,7 @@ uglyURLs = false
     [markup.highlight]
         codeFences = true
         guessSyntax = false
-        lineNos = true
+        lineNos = false
         lineNumbersInTable = true
         noClasses = false
     [markup.tableOfContents]
@@ -94,17 +94,17 @@ uglyURLs = false
 # Author’s information
 [author]
     # Name
-    name = "reuixiy"
+    name = "Alecto Irene Perez"
     # Email
-    email = "reuixiy@gmail.com"
+    email = "perez.cs@pm.me"
     # Motto or introduction
-    motto = "Viva La Vida"
+    motto = "Be gay; do crime"
     # Avatar
     avatar = "/icons/apple-touch-icon.png"
     # Personal website, default: baseURL
-    website = "https://io-oi.me/"
+    website = "https://codeinred.io/"
     # Twitter
-    twitter = "reuixiy"
+    twitter = "codeinred"
 
 # Related content
 [related]
@@ -151,6 +151,7 @@ uglyURLs = false
 # Hugo’s output control
 [outputs]
     page = ["HTML"]
+    # Alternative:
     # home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex", "Algolia"]
     home = ["HTML", "SectionsAtom", "SectionsRSS", "SearchIndex"]
     section = ["HTML"]
@@ -275,8 +276,6 @@ uglyURLs = false
     ######################################
     # Brand Bar (inside header)
 
-    # Use SVG?
-    siteBrandSVG = false
     # If true, put your SVG in the `SVG.toml`
     # file and configure the following options.
     # Unit: px
@@ -357,7 +356,7 @@ uglyURLs = false
     # ATTENTION: keep this format, change
     #            the number
 
-    siteTwitter = "reuixiy"
+    siteTwitter = "codeinred"
     # Note: used for Twitter Cards
 
 
@@ -617,6 +616,8 @@ uglyURLs = false
     ######################################
     # MathJax (chemical equation supported)
 
+    # setting it true globally may increase load times
+    # the preferred option is to set it to true on a post-by-post basis
     enableMathJax = false
     # Note: *global settings*
     #       `mathjax` in post’s Front Matter
@@ -1007,7 +1008,7 @@ uglyURLs = false
     ######################################
     ## Font Size (unit: px)
 
-    fontSize = 18
+    fontSize = 16
 
     ######################################
     ## Tab Size
@@ -1048,7 +1049,7 @@ uglyURLs = false
     ######################################
     ## Drop Cap
 
-    enableDropCap = true
+    enableDropCap = false
     # Note: *global settings*
     #       `dropCap` in post’s Front Matter
     #       has a higher priority than here
@@ -1070,7 +1071,7 @@ uglyURLs = false
     ######################################
     ## Small Caps
 
-    enableSmallCaps = true
+    enableSmallCaps = false
     # Note: apply to headings & post toc
     #       title only
     #       *global settings*
@@ -1079,9 +1080,6 @@ uglyURLs = false
 
     ######################################
     ## Emphasis Point (Chinese)
-
-    # Note: new Markdown syntax created by Mercymorn
-    #       `..文本..`
 
     enableEmphasisPoint = false
 
@@ -1150,7 +1148,7 @@ uglyURLs = false
 
     enablePostShare = true
 
-    displayPostShare = true
+    displayPostShare = false
     # Note: *global settings*
     #       `share` in post’s Front Matter
     #       has a higher priority than here
@@ -1259,7 +1257,7 @@ uglyURLs = false
     iconBetweenYearAndAuthor = "heart"
     iconColor = "#f06292"
     # Enable heartbeat animation?
-    iconAnimation = true
+    iconAnimation = false
 
     # Display links to Hugo and Mercymorn?
     displayPoweredBy = true
@@ -1304,7 +1302,7 @@ uglyURLs = false
     enableHighlight = true
 
     enableOverflowY = true
-    maxHeight = 20
+    maxHeight = 40
     # Unit: em
 
     enableCopy = true
@@ -1348,6 +1346,7 @@ uglyURLs = false
     # Smooth Scroll
 
     enableSmoothScroll = true
+    # Note: https://github.com/cferdinandi/smooth-scroll
 
 
     ######################################
@@ -1368,7 +1367,7 @@ uglyURLs = false
     # Lunr search
 
     # Note: This requires SearchIndex
-    #       output to be enabled.
+    # output to be enabled.
 
     enableLunrSearch = true
     # Note: https://lunrjs.com/

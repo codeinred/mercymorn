@@ -21,7 +21,7 @@
             </div>
 
             {{- if .Site.Params.displayPoweredBy }}
-                {{- $raw := `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [Mercymorn](https://github.com/codeinred/mercymorn)` -}}
+                {{- $raw := `Powered by [Hugo](https://github.com/gohugoio/hugo) | Theme is [Mercymorn](https://github.com/codeinred/mercymorn), based on [MemE by reuixiy](https://github.com/reuixiy/hugo-theme-meme.git)` -}}
                 <div class="powered-by">{{ partial "utils/markdownify.html" (dict "$" $ "raw" $raw "isContent" false) }}</div>
             {{- end }}
 
