@@ -2,14 +2,14 @@
 # Site Settings
 
 baseURL = "https://example.com/"
-title = "Hugo Theme MemE"
+title = "Mercymorn Theme"
 languageCode = "en"
 hasCJKLanguage = false
 # Copyright information (Markdown supported)
 copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en)"
 
 # Name of theme
-theme = "meme"
+theme = "mercymorn"
 
 # `hugo new` automatically opened text editor
 newContentEditor = ""
@@ -38,7 +38,7 @@ enableRobotsTXT = true
 
 # Number of items per page in paginated
 # lists (valid for the `posts` homepage
-# layout in MemE)
+# layout in Mercymorn)
 paginate = 5
 
 # URL related
@@ -126,12 +126,12 @@ uglyURLs = false
 [mediaTypes."application/atom+xml"]
     suffixes = ["xml"]
 
-# Custom Atom template of MemE
+# Custom Atom template of Mercymorn
 [outputFormats.SectionsAtom]
     mediaType = "application/atom+xml"
     baseName = "atom"
 
-# Custom RSS template of MemE
+# Custom RSS template of Mercymorn
 [outputFormats.SectionsRSS]
     mediaType = "application/rss+xml"
     baseName = "rss"
@@ -166,7 +166,7 @@ uglyURLs = false
 ##########################################
 # Menu Settings
 
-# MemE supports the following four menus:
+# Mercymorn supports the following four menus:
 # 1. main       Menu bar below the header
 #               (center layout) or inside
 #               the header (flex layout)
@@ -314,7 +314,7 @@ uglyURLs = false
     ######################################
     # Homepage Layout
 
-    # For homepage layout, MemE has the
+    # For homepage layout, Mercymorn has the
     # following four different types:
     # 1. poetry    A few lines of verse
     # 2. footage   With fullscreen background videos
@@ -349,7 +349,7 @@ uglyURLs = false
     siteLogo = "/icons/apple-touch-icon.png"
     # Note: used for JSON-LD, Open Graph
 
-    siteDescription = "MemE is a powerful and highly customizable GoHugo theme for personal blogs."
+    siteDescription = "Mercymorn is a powerful and highly customizable GoHugo theme for personal blogs."
     # Note: used for HTML head meta, JSON-LD,
     #       Open Graph, Atom, RSS
 
@@ -364,7 +364,7 @@ uglyURLs = false
     ######################################
     # Category By
 
-    # MemE supports category by:
+    # Mercymorn supports category by:
     # 1. sections
     # 2. categories
     # The sections is based on the site’s
@@ -517,7 +517,7 @@ uglyURLs = false
     #       Matter has a higher priority
     #       than assign manually in the
     #       custom Atom & RSS template of
-    #       MemE.
+    #       Mercymorn.
 
 
     ######################################
@@ -898,8 +898,8 @@ uglyURLs = false
     #
     #       only support absolute URLs
     #       relative to root, e.g.
-    #       /images/meme.jpg
-    #       (~/blog/static/images/meme.jpg)
+    #       /images/mercymorn.jpg
+    #       (~/blog/static/images/mercymorn.jpg)
 
     enableImageHost = false
 
@@ -918,7 +918,7 @@ uglyURLs = false
     #
     #       only support absolute URLs
     #       relative to root, e.g.
-    #       /videos/meme.mp4
+    #       /videos/mercymorn.mp4
     #
     #       and the HTML code you add must
     #       start with `<video src="`
@@ -997,7 +997,7 @@ uglyURLs = false
     # Note: In order for the reader to
     #       experience the fonts you set,
     #       it is best to use web fonts.
-    #       MemE currently only supports
+    #       Mercymorn currently only supports
     #       Google Fonts, please go to
     #       https://fonts.google.com/ to
     #       get the link. If this is left
@@ -1080,7 +1080,7 @@ uglyURLs = false
     ######################################
     ## Emphasis Point (Chinese)
 
-    # Note: new Markdown syntax created by MemE
+    # Note: new Markdown syntax created by Mercymorn
     #       `..文本..`
 
     enableEmphasisPoint = false
@@ -1195,7 +1195,7 @@ uglyURLs = false
     ######################################
     # Previous/Next Post
 
-    # Note: In MemE, it is designed from a
+    # Note: In Mercymorn, it is designed from a
     #       spatial perspective rather
     #       than a time perspective like
     #       most other themes do.
@@ -1261,7 +1261,7 @@ uglyURLs = false
     # Enable heartbeat animation?
     iconAnimation = true
 
-    # Display links to Hugo and MemE?
+    # Display links to Hugo and Mercymorn?
     displayPoweredBy = true
 
     displaySiteCopyright = true
@@ -1315,13 +1315,13 @@ uglyURLs = false
     # Fingerprinting and SRI
 
     # Note: valid for CSS and JS generated
-    #       by MemE only
+    #       by Mercymorn only
 
     enableFingerprint = true
 
     enableSRI = false
     # Note: subresource integrity will
-    #       block MemE CSS and JS on third
+    #       block Mercymorn CSS and JS on third
     #       party websites like Google
     #       Translate. To prevent this,
     #       your server has to send the

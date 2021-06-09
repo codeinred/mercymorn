@@ -52,7 +52,7 @@
     {{- end -}}
 {{- end -}}
 
-{{- $path := (strings.TrimPrefix "/" (printf `%s/js/meme.js` .Site.LanguagePrefix)) -}}
+{{- $path := (strings.TrimPrefix "/" (printf `%s/js/mercymorn.js` .Site.LanguagePrefix)) -}}
 
 {{- $script := $processedScripts | resources.Concat $path | resources.Minify -}}
 {{- if .Site.Params.enableFingerprint -}}

@@ -1,22 +1,22 @@
 English |
-[简体中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-cn.md) |
-[繁體中文](https://github.com/reuixiy/hugo-theme-meme/blob/master/README.zh-tw.md)
+[简体中文](https://github.com/codeinred/mercymorn/blob/master/README.zh-cn.md) |
+[繁體中文](https://github.com/codeinred/mercymorn/blob/master/README.zh-tw.md)
 
-<div align="center"><img src="https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/static/icons/apple-touch-icon.png" /></div>
+<div align="center"><img src="https://raw.githubusercontent.com/codeinred/mercymorn/master/static/icons/apple-touch-icon.png" /></div>
 
-# <div align="center">MemE</div>
+# <div align="center">Mercymorn</div>
 
 ## Description
 
-MemE is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) theme for personal blogs. MemE focuses on elegance, simplicity, modernity, and code correctness. Also, I hope you would enjoy MemE like a meme and share MemE like a meme! Just like what your blog and articles do! 😝
+Mercymorn is a powerful and highly customizable [GoHugo](https://github.com/gohugoio/hugo) theme for personal blogs. Mercymorn focuses on elegance, simplicity, modernity, and code correctness. Also, I hope you would enjoy Mercymorn like a mercymorn and share Mercymorn like a mercymorn! Just like what your blog and articles do! 😝
 
 ## Preview
 
-![tn.png](https://raw.githubusercontent.com/reuixiy/hugo-theme-meme/master/images/tn.png)
+![tn.png](https://raw.githubusercontent.com/codeinred/mercymorn/master/images/tn.png)
 
 ### Browser support
 
-MemE uses [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) and [let statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) extensively. These features are supported by the following browsers:
+Mercymorn uses [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) and [let statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let) extensively. These features are supported by the following browsers:
 
 - Chrome 49+
 - Firefox 44+
@@ -41,20 +41,20 @@ For Arch Linux users:
 
 For users of other systems, see: https://gohugo.io/getting-started/installing/
 
-### Install MemE
+### Install Mercymorn
 
 ```sh
 ~ $ cd blog
 ~/blog $ git init
-~/blog $ git submodule add --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+~/blog $ git submodule add --depth 1 https://github.com/codeinred/mercymorn.git themes/mercymorn
 ```
 
 ### Blogging
 
-1. Replace `config.toml` with [config examples](https://github.com/reuixiy/hugo-theme-meme/blob/master/config-examples/en/config.toml).
+1. Replace `config.toml` with [config examples](https://github.com/codeinred/mercymorn/blob/master/config-examples/en/config.toml).
 
    ```sh
-   ~/blog $ rm config.toml && cp themes/meme/config-examples/en/config.toml config.toml
+   ~/blog $ rm config.toml && cp themes/mercymorn/config-examples/en/config.toml config.toml
    ```
 
 2. Create a new post and the about page:
@@ -70,15 +70,15 @@ For users of other systems, see: https://gohugo.io/getting-started/installing/
    ~/blog $ hugo server -D
    ```
 
-## Customize MemE
+## Customize Mercymorn
 
-MemE uses SCSS via [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) to generate CSS instead of static CSS file and provides a [`_custom.scss`](https://github.com/reuixiy/hugo-theme-meme/blob/master/assets/scss/custom/_custom.scss) for customization.
+Mercymorn uses SCSS via [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/) to generate CSS instead of static CSS file and provides a [`_custom.scss`](https://github.com/codeinred/mercymorn/blob/master/assets/scss/custom/_custom.scss) for customization.
 
-Just create a `~/blog/assets/scss/custom/_custom.scss` and add your own styles into this file. Your `_custom.scss` will override `~/blog/themes/meme/assets/scss/custom/_custom.scss` and your custom CSS will be applied correctly.
+Just create a `~/blog/assets/scss/custom/_custom.scss` and add your own styles into this file. Your `_custom.scss` will override `~/blog/themes/mercymorn/assets/scss/custom/_custom.scss` and your custom CSS will be applied correctly.
 
 Actually, you can override any template of theme in Hugo, see this _unofficial mirror_ page: https://gohugobrasil.netlify.com/themes/customizing/
 
-## Update MemE
+## Update Mercymorn
 
 ```sh
 ~/blog $ git submodule update --rebase --remote
@@ -86,21 +86,21 @@ Actually, you can override any template of theme in Hugo, see this _unofficial m
 
 If failed, try:
 
-1. Delete `meme` folder, e.g.
+1. Delete `mercymorn` folder, e.g.
 
    ```sh
-   ~/blog $ rm -rf themes/meme
+   ~/blog $ rm -rf themes/mercymorn
    ```
 
-2. Clone MemE again
+2. Clone Mercymorn again
 
    ```sh
-   ~/blog $ git clone --depth 1 https://github.com/reuixiy/hugo-theme-meme.git themes/meme
+   ~/blog $ git clone --depth 1 https://github.com/codeinred/mercymorn.git themes/mercymorn
    ```
 
-**Note that** MemE makes some brand new features or _breaking changes_ sometimes, so please be sure to check [the modification history of `config.toml`](https://github.com/reuixiy/hugo-theme-meme/commits/master/config-examples) and update the related items after the update!
+**Note that** Mercymorn makes some brand new features or _breaking changes_ sometimes, so please be sure to check [the modification history of `config.toml`](https://github.com/codeinred/mercymorn/commits/master/config-examples) and update the related items after the update!
 
-## Awesome MemE
+## Awesome Mercymorn
 
 See [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2).
 
@@ -165,6 +165,6 @@ See [#2](https://github.com/reuixiy/hugo-theme-meme/issues/2).
   | disqus_identifier                           | \*                                                                                                       | string, if not set, will use `RelPermalink` as default                       |
   | disqus_title                                | \*                                                                                                       | string, if not set, will use `Title` as default                              |
 
-  \*: see https://gohugo.io/content-management/front-matter/  
+  \*: see https://gohugo.io/content-management/front-matter/
       and https://gohugo.io/templates/internal/#configure-disqus
 </details>

@@ -2,14 +2,14 @@
 # 站点配置
 
 baseURL = "https://example.com/"
-title = "Hugo 主题 MemE"
+title = "Hugo 主题 Mercymorn"
 languageCode = "zh-CN"
 hasCJKLanguage = true
 # 版权信息（支持 Markdown）
 copyright = "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)"
 
 # 主题选择
-theme = "meme"
+theme = "mercymorn"
 
 # `hugo new` 新建文章自动打开的文本编辑器
 newContentEditor = ""
@@ -124,12 +124,12 @@ uglyURLs = false
 [mediaTypes."application/atom+xml"]
     suffixes = ["xml"]
 
-# MemE 主题自定义的 Atom 模板
+# Mercymorn 主题自定义的 Atom 模板
 [outputFormats.SectionsAtom]
     mediaType = "application/atom+xml"
     baseName = "atom"
 
-# MemE 主题自定义的 RSS 模板
+# Mercymorn 主题自定义的 RSS 模板
 [outputFormats.SectionsRSS]
     mediaType = "application/rss+xml"
     baseName = "rss"
@@ -164,7 +164,7 @@ uglyURLs = false
 ##########################################
 # 菜单配置
 
-# MemE 主题支持以下四种菜单：
+# Mercymorn 主题支持以下四种菜单：
 # 1. main       顶栏下方（居中布局）或里面（弹性
 #               布局）的菜单栏
 # 2. home       首页的底部链接（适用于「诗意
@@ -299,7 +299,7 @@ uglyURLs = false
     ######################################
     # 首页布局
 
-    # MemE 主题有以下四种首页布局：
+    # Mercymorn 主题有以下四种首页布局：
     # 1. poetry    诗意人生
     # 2. footage   视频片段
     # 3. posts     文章摘要
@@ -334,7 +334,7 @@ uglyURLs = false
     # 说明：用于 JSON-LD、Open Graph
 
     # 站点的描述
-    siteDescription = "MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。"
+    siteDescription = "Mercymorn 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。"
     # 说明：用于 HTML 的头部元数据、JSON-LD、
     #      Open Graph、Atom、RSS
 
@@ -350,7 +350,7 @@ uglyURLs = false
     ######################################
     # 分类方式
 
-    # MemE 主题支持以下两种分类方式：
+    # Mercymorn 主题支持以下两种分类方式：
     # 1. sections       分区
     # 2. categories     部类
     # 其中，分区是基于站点的 content 目录下的
@@ -472,7 +472,7 @@ uglyURLs = false
     #      或者在文章的 Front Matter 中通过
     #      `summary` 手动指定。其中，应用的优
     #      先级顺序：手动指定 > 手动控制 > 自
-    #      动截取。还需要注意的是，在 MemE 主
+    #      动截取。还需要注意的是，在 Mercymorn 主
     #      题自定义的 Atom 和 RSS 的模板中，
     #      有一个比手动指定更高的优先级——
     #      Front Matter 中的 `description`。
@@ -855,8 +855,8 @@ uglyURLs = false
     # 说明：仅在生产环境（production）下渲染
     #
     #      只支持相对于网站根目录的绝对链接
-    #      比如：/images/meme.jpg
-    #      (~/blog/static/images/meme.jpg)
+    #      比如：/images/mercymorn.jpg
+    #      (~/blog/static/images/mercymorn.jpg)
 
     # 是否开启
     enableImageHost = false
@@ -874,7 +874,7 @@ uglyURLs = false
     # 说明：仅在生产环境（production）下渲染
     #
     #      只支持相对于网站根目录的绝对链接
-    #      比如：/videos/meme.mp4
+    #      比如：/videos/mercymorn.mp4
     #
     #      且你添加的 HTML 代码必需以以下开头：
     #      `<video src="`
@@ -941,7 +941,7 @@ uglyURLs = false
     # 网络字体链接
     fontsLink = "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Noto+Serif+SC:wght@400;500;700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
     # 说明：要想读者一定体验到你设置的字体，最好
-    #      采用网络字体。MemE 主题目前仅支持
+    #      采用网络字体。Mercymorn 主题目前仅支持
     #      Google Fonts 的链接，请前往
     #      https://fonts.google.com/ 获取。
     #      此项留空（""），则不会采用网络字体。
@@ -1017,7 +1017,7 @@ uglyURLs = false
     ######################################
     ## 着重号
 
-    # 说明：MemE 主题自创的新 Markdown 语法
+    # 说明：Mercymorn 主题自创的新 Markdown 语法
     #      `..文本..`
 
     # 是否开启
@@ -1156,7 +1156,7 @@ uglyURLs = false
     ######################################
     # 文章上下篇
 
-    # 说明：在 MemE 主题中，文章上下篇是从空间
+    # 说明：在 Mercymorn 主题中，文章上下篇是从空间
     #      位置角度设计的，而不是像大多数其它主
     #      题所做的那样——从时间角度设计。因此，
     #      如果你点击左边的上篇，跳转的是一篇更
@@ -1228,7 +1228,7 @@ uglyURLs = false
     # 是否开启图标的跳动效果
     iconAnimation = true
 
-    # 是否显示 Hugo 和 MemE 的链接
+    # 是否显示 Hugo 和 Mercymorn 的链接
     displayPoweredBy = true
 
     # 是否显示站点的版权信息
@@ -1287,7 +1287,7 @@ uglyURLs = false
     ######################################
     # 文件指纹和子资源完整性（SRI）
 
-    # 说明：仅对 MemE 生成的 CSS 和 JS 有效
+    # 说明：仅对 Mercymorn 生成的 CSS 和 JS 有效
 
     # 是否开启文件指纹
     enableFingerprint = true
@@ -1295,7 +1295,7 @@ uglyURLs = false
     # 是否开启子资源完整性验证
     enableSRI = false
     # 说明：开启子资源完整性验证后，该策略将使
-    #      MemE 的 CSS 和 JS 在像谷歌翻译这样
+    #      Mercymorn 的 CSS 和 JS 在像谷歌翻译这样
     #      的第三方网站上被禁止。为了避免开启后
     #      的这个问题，你的服务器必须向 CSS 和
     #      JS 的请求中加上以下 Header：
