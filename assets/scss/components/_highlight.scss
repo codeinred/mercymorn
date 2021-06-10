@@ -26,7 +26,12 @@ span.lnt {
 
 .chroma {
     color: var(--color-contrast-high);
-    background-color: alpha(var(--color-contrast-lower), 0.5);
+    background-color: rgba(191, 191, 191, 0.1);
+    border-radius: 0.5em;
+    span.kt { font-weight: bold; }
+    .nf {
+        font-style: italic;
+    }
 }
 
 @if ($enableOverflowY) {

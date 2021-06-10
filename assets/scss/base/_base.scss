@@ -30,8 +30,9 @@ body {
     position: relative;
 }
 
+// The main element needs to be padded to account for the height of the header
 .main {
-    padding: 2em 1em 15em;
+    padding: var(--header-height) 0.75rem 0;
     display: block;
 }
 
@@ -57,30 +58,37 @@ svg {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin: 1.618em 0 1em;
     color: var(--color-contrast-higher);
+    margin: 0.5em 0 0em;
+    code {
+        font-size: 110%;
+        background-color: transparent;
+        font-weight: 300;
+        font-variant-caps: normal;
+        font-style: italic;
+    }
     a {
         text-decoration: none !important;
         color: var(--color-contrast-higher);
     }
 }
 h1 {
-    font-size: 2em;
+    font-size:1.7em
 }
 h2 {
-    font-size: 1.8em;
+    font-size:1.55em
 }
 h3 {
-    font-size: 1.6em;
+    font-size:1.4em
 }
 h4 {
-    font-size: 1.4em;
+    font-size:1.25em
 }
 h5 {
-    font-size: 1.2em;
+    font-size:1.1em
 }
 h6 {
-    font-size: 1em;
+    font-size:1em
 }
 
 a {

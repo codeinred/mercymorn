@@ -10,7 +10,7 @@
   {{ end }}
   {{ $url_part := (delimit $fonts "|") | safeHTMLAttr }}
   {{- with printf "https://fonts.googleapis.com/css?family=%s&display=swap" $url_part | safeHTMLAttr -}}
-    <link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="{{ . }}" media="all" onload="this.media='all'" />
     <noscript><link rel="stylesheet" href="{{ . }}" /></noscript>
   {{- end -}}
 {{ else}}

@@ -1,5 +1,7 @@
+// The footer is already automatically at the bottom b/c it comes directly after the main element
+// Making it static means we don't need to pad the main element
 .footer {
-    position: absolute;
+    position: static;
     bottom: 0;
     width: 100%;
     font-size: 90%;
