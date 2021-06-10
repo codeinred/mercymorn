@@ -1,0 +1,19 @@
+<!-- Constructs a google font api url from google_fonts param -->
+
+{{ if .Site.Params.google_fonts }}
+  {{ $fonts := slice }}
+  {{ range .Site.Params.google_fonts }}
+    {{ $family := replace (index (.)  0) " " "+" }}
+    {{ $weights := replace (index (.) 1) " " "" }}
+    {{ $string := print $family ":" $weights }}
+    {{ $fonts = $fonts | append $string }}
+  {{ end }}
+  {{ $url_part := (delimit $fonts "|") | safeHTMLAttr }}
+  {{- with printf "https://fonts.googleapis.com/css?family=%s&display=swap" $url_part | safeHTMLAttr -}}
+    <link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="{{ . }}" /></noscript>
+  {{- end -}}
+{{ else}}
+  <!-- specify a default in case custom config not present -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex&;Serif:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Source+Code+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+{{ end }}

@@ -1,5 +1,23 @@
 <head{{ if .Site.Params.openGraph }} prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#"{{ end }}>
     <meta charset="UTF-8" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+{{ partial "google-fonts" . }}
+
+{{/*
+    Inlines font styles into the header, in accordance with best practices
+    See https://web.dev/font-best-practices/#inline-font-declarations
+*/}}
+{{ with resources.Get "scss/inline.scss"
+    | resources.ExecuteAsTemplate (printf "%s/styles/inline-rendered.scss" .Lang) .
+    | resources.ToCSS }}
+<style>
+    {{ .Content | safeCSS }}
+</style>
+{{ end }}
+
+<!-- CSS -->
+{{- partial "style.html" . }}
 
     {{ hugo.Generator }}
 
@@ -22,21 +40,10 @@
 
     <title>{{ (partial "utils/title.html" (dict "$" . "title" .Title)).title }}</title>
 
-    <!-- CSS -->
-    {{- partial "style.html" . }}
-
     <!-- JavaScript -->
     {{ if ne .Kind "404" }}
         {{ partial "script.html" . }}
     {{ end }}
-
-    <!-- Fonts -->
-    {{- with .Site.Params.fontsLink -}}
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-        <link rel="stylesheet" href="{{ . }}" media="print" onload="this.media='all'" />
-        <noscript><link rel="stylesheet" href="{{ . }}" /></noscript>
-    {{- end }}
 
     <meta name="author" content="{{ .Params.author | default .Site.Author.name }}" />
     {{- $description := .Description | default (partial "utils/summary.html" .) | default .Site.Params.siteDescription | plainify | htmlUnescape -}}
