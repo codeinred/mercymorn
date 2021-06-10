@@ -1,7 +1,2 @@
-<script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js"></script>
-
-<script>
-    mediumZoom(document.querySelectorAll('div.post-body img'), {
-        background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'
-    })
-</script>
+{{/* On load we run mediumZoom. This allows us to defer loading of the script */}}
+<script src="https://cdn.jsdelivr.net/npm/medium-zoom@latest/dist/medium-zoom.min.js" onload="mediumZoom(document.querySelectorAll('div.post-body img'), {background: 'hsla(var(--color-bg-h), var(--color-bg-s), var(--color-bg-l), 0.95)'})" defer></script>
