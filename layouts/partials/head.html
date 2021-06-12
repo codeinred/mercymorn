@@ -2,22 +2,10 @@
     <meta charset="UTF-8" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-{{ partial "google-fonts" . }}
+{{- partial "google-fonts" . }}
 
-{{/*
-    Inlines font styles into the header, in accordance with best practices
-    See https://web.dev/font-best-practices/#inline-font-declarations
-*/}}
-{{ with resources.Get "scss/fonts.scss"
-    | resources.ExecuteAsTemplate (printf "%s/styles/inline-rendered.scss" .Lang) .
-    | resources.ToCSS }}
-<style>
-    {{ .Content | safeCSS }}
-</style>
-{{ end }}
-
-<!-- CSS -->
 {{- partial "style.html" . }}
+
 
     {{ hugo.Generator }}
 
