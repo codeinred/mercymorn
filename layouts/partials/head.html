@@ -8,7 +8,7 @@
     Inlines font styles into the header, in accordance with best practices
     See https://web.dev/font-best-practices/#inline-font-declarations
 */}}
-{{ with resources.Get "scss/inline.scss"
+{{ with resources.Get "scss/fonts.scss"
     | resources.ExecuteAsTemplate (printf "%s/styles/inline-rendered.scss" .Lang) .
     | resources.ToCSS }}
 <style>

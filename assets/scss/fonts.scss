@@ -1,3 +1,41 @@
+{{ if .Site.Params.enableChinesePunctuationGlyphCorrection }}
+    {{ .Scratch.Set "glyph" "'glyph-correction', " }}
+{{ else }}
+    {{ .Scratch.Set "glyph" "" }}
+{{ end }}
+{{ $glyph := .Scratch.Get "glyph" }}
+
+{{ with .Site.Params.fontFamilySiteBrand }}
+    $fontFamilySiteBrand: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyMenu }}
+    $fontFamilyMenu: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyTitle }}
+    $fontFamilyTitle: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyHeadings }}
+    $fontFamilyHeadings: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyCode }}
+    $fontFamilyCode: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyQuote }}
+    $fontFamilyQuote: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyTOC }}
+    $fontFamilyTOC: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyCaption }}
+    $fontFamilyCaption: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyFooter }}
+    $fontFamilyFooter: {{ $glyph }}{{ . }};
+{{ end }}
+{{ with .Site.Params.fontFamilyBody }}
+    $fontFamilyBody: {{ $glyph }}{{ . }};
+{{ end }}
+
 @if variable-exists("fontFamilySiteBrand") {
     .site-brand {
         font-family: $fontFamilySiteBrand;
