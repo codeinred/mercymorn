@@ -1,3 +1,21 @@
+
+{{/* If we self-host our fonts, this will inline the font-faces stylesheet
+    which bypasses loading of the google fonts stylesheet.
+    This makes loading much faster.
+    */}}
+{{- if .Site.Params.selfHostFonts }}
+    {{- $options := (dict "outputStyle" "compressed") -}}
+    {{ with resources.Get "scss/font-faces.scss"
+        | resources.ExecuteAsTemplate (printf "%s/styles/mercymorn.font-faces.scss" .Lang) .
+        | resources.ToCSS $options }}
+    <style>
+        {{ .Content | safeCSS }}
+    </style>
+    {{ end }}
+{{- else -}}
+    {{- partial "google-fonts" . }}
+{{- end -}}
+
 {{/* Inlines fonts.scss if inlineFonts is true */}}
 {{- if .Site.Params.inlineFonts }}
     {{- $options := (dict "outputStyle" "compressed") -}}

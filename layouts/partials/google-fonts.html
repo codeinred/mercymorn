@@ -1,5 +1,7 @@
 <!-- Constructs a google font api url from google_fonts param -->
 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 {{ if .Site.Params.google_fonts }}
   {{ $fonts := slice }}
   {{ range .Site.Params.google_fonts }}
