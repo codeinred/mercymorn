@@ -23,9 +23,10 @@
     {{- end -}}
     {{- $icon := .Scratch.Get "icon" -}}
     {{- $anchor := $icon | default .Site.Params.anchorSymbol | default "§" -}}
+    {{- $anchorExternal := "<svg class='icon anchor-icon'><use href='/icons/anchor.svg#icon'/></svg>" -}}
 
     {{- if .Site.Params.enableAnchorLink -}}
-        {{- $replacement := (printf `$1<a href="#$2" class="anchor-link">%s</a>$3$4` $anchor) -}}
+        {{- $replacement := (printf `$1<a href="#$2" class="anchor-link">%s</a>$3$4` $anchorExternal) -}}
         {{- $.Scratch.Set "replacement" $replacement -}}
     {{- else -}}
         {{- $replacement := (printf `$1<span class="anchor-link">%s</span>$3$4` $anchor) -}}
