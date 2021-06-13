@@ -5,13 +5,13 @@
     */}}
 {{- if .Site.Params.selfHostFonts }}
     {{- $options := (dict "outputStyle" "compressed") -}}
-    {{ with resources.Get "scss/font-faces.scss"
-        | resources.ExecuteAsTemplate (printf "%s/styles/mercymorn.font-faces.scss" .Lang) .
-        | resources.ToCSS $options }}
+    {{- with resources.Get "scss/font-faces.scss"
+        | resources.ExecuteAsTemplate "fonts.faces.template.scss" .
+        | resources.ToCSS $options -}}
     <style>
         {{ .Content | safeCSS }}
     </style>
-    {{ end }}
+    {{- end -}}
 {{- else -}}
     {{- partial "google-fonts" . }}
 {{- end -}}
@@ -20,7 +20,7 @@
 {{- if .Site.Params.inlineFonts }}
     {{- $options := (dict "outputStyle" "compressed") -}}
     {{ with resources.Get "scss/fonts.scss"
-        | resources.ExecuteAsTemplate (printf "%s/styles/mercymorn.fonts.scss" .Lang) .
+        | resources.ExecuteAsTemplate "fonts.template.scss" .
         | resources.ToCSS $options }}
     <style>
         {{ .Content | safeCSS }}
