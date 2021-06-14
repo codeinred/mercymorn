@@ -11,10 +11,6 @@
 }
 
 @if ($headerLayoutFlex) {
-    .header {
-        position: fixed;
-        width: 100%;
-    }
     .header-wrapper {
         border-bottom: 0.15em solid var(--color-accent);
         background: var(--color-bg);
@@ -42,10 +38,6 @@
         margin-right: 1em;
     }
 } @else {
-    .header {
-        position: relative;
-        background: $headerBackground;
-    }
     .site-brand {
         text-align: center;
     }
