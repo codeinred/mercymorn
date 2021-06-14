@@ -1,5 +1,6 @@
 {{- $Content := partial "utils/markdownify.html" (dict "$" . "raw" .Content "isContent" true) -}}
 
+{{/* Commented for now since it doesn't seem to work
 <!-- Link Headings to TOC -->
 {{- $enableTOC := .Params.toc | default .Site.Params.enableTOC -}}
 {{- if and $enableTOC .Site.Params.linkHeadingsToTOC -}}
@@ -7,37 +8,7 @@
     {{- $regexReplacementLinkHeadings := `$1<a href="#contents:$2" class="headings">$3</a>$4` -}}
     {{- $Content = $Content | replaceRE $regexPatternLinkHeadings $regexReplacementLinkHeadings -}}
 {{- end -}}
-
-<!-- Headings Anchor -->
-{{- if .Params.anchor | default .Site.Params.enableHeadingsAnchor -}}
-    {{- with .Site.Params.headingsOpt -}}
-        {{- $headings := . -}}
-        {{- $.Scratch.Set "headings" $headings -}}
-    {{- end -}}
-    {{- $headings := .Scratch.Get "headings" -}}
-    {{- $headings := $headings | default "1-6" -}}
-
-    {{- with .Site.Params.anchorIcon -}}
-        {{- $icon := (replace (index $.Site.Data.SVG .) "icon" "icon anchor-icon") -}}
-        {{- $.Scratch.Set "icon" $icon -}}
-    {{- end -}}
-    {{- $icon := .Scratch.Get "icon" -}}
-    {{- $anchor := $icon | default .Site.Params.anchorSymbol | default "§" -}}
-    {{- $anchorExternal := "<svg class='icon anchor-icon'><use href='/icons/anchor.svg#icon'/></svg>" -}}
-
-    {{- if .Site.Params.enableAnchorLink -}}
-        {{- $replacement := (printf `$1<a href="#$2" class="anchor-link">%s</a>$3$4` $anchorExternal) -}}
-        {{- $.Scratch.Set "replacement" $replacement -}}
-    {{- else -}}
-        {{- $replacement := (printf `$1<span class="anchor-link">%s</span>$3$4` $anchor) -}}
-        {{- $.Scratch.Set "replacement" $replacement -}}
-    {{- end -}}
-    {{- $replacement := .Scratch.Get "replacement" -}}
-
-    {{- $regexPatternHeadingsAnchor := (printf `(<h[%s] id="([^"]+)">)(.+)?(</h[%s]+>)` $headings $headings) -}}
-    {{- $regexReplacementHeadingsAnchor := $replacement -}}
-    {{- $Content = $Content | replaceRE $regexPatternHeadingsAnchor $regexReplacementHeadingsAnchor -}}
-{{- end -}}
+*/}}
 
 <!-- Drop Cap -->
 {{- if eq .Type "poetry" -}}
