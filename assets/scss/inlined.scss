@@ -1,0 +1,11 @@
+// This file is meant for crucial layout code that
+// Should be inlined
+
+// If someone can figure out what this should be applied to, please tell me
+// It didn't work until I applied it to literally everything
+html {
+    {{ if .Site.Params.enableSmoothScroll | default true }}
+        scroll-behavior: smooth;
+    {{ end }}
+    scroll-padding-top: 3rem;
+}

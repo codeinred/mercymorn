@@ -41,6 +41,14 @@
     {{- end -}}
 {{- end -}}
 
+{{- with resources.Get "scss/inlined.scss"
+    | resources.ExecuteAsTemplate "mercymorn.inlined.scss" .
+    | resources.ToCSS (dict "outputStyle" "compressed") -}}
+    <style>
+        {{ .Content | safeCSS }}
+    </style>
+{{- end -}}
+
 {{/* Inlines main.scss if inlineFonts is true */}}
 {{- if .Site.Params.inlineCSS -}}
     {{- $options := (dict "outputStyle" "compressed") -}}
