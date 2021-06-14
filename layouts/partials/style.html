@@ -4,13 +4,12 @@
     This makes loading much faster.
     */}}
 {{- if .Site.Params.selfHostFonts }}
-    {{- $options := (dict "outputStyle" "compressed") -}}
     {{- with resources.Get "scss/font-faces.scss"
         | resources.ExecuteAsTemplate "fonts.faces.template.scss" .
-        | resources.ToCSS $options -}}
-    <style>
-        {{ .Content | safeCSS }}
-    </style>
+        | resources.ToCSS (dict) -}}
+<style>
+    {{ .Content | safeCSS }}
+</style>
     {{- end -}}
 {{- else -}}
     {{- partial "google-fonts" . }}
@@ -18,14 +17,13 @@
 
 {{/* Inlines fonts.scss if inlineFonts is true */}}
 {{- if .Site.Params.inlineFonts }}
-    {{- $options := (dict "outputStyle" "compressed") -}}
-    {{ with resources.Get "scss/fonts.scss"
+    {{- with resources.Get "scss/fonts.scss"
         | resources.ExecuteAsTemplate "fonts.template.scss" .
-        | resources.ToCSS $options }}
-    <style>
-        {{ .Content | safeCSS }}
-    </style>
-    {{ end }}
+        | resources.ToCSS (dict) -}}
+<style>
+    {{- .Content | safeCSS -}}
+</style>
+    {{- end -}}
 {{- else -}}
     {{- $path := (strings.TrimPrefix "/" (printf `%s/css/mercymorn.fonts.css` .Site.LanguagePrefix)) -}}
     {{- $options := (dict "targetPath" $path "outputStyle" "compressed") -}}
@@ -43,10 +41,10 @@
 
 {{- with resources.Get "scss/inlined.scss"
     | resources.ExecuteAsTemplate "mercymorn.inlined.scss" .
-    | resources.ToCSS (dict "outputStyle" "compressed") -}}
-    <style>
-        {{ .Content | safeCSS }}
-    </style>
+    | resources.ToCSS (dict) -}}
+<style>
+    {{- .Content | safeCSS -}}
+</style>
 {{- end -}}
 
 {{/* Inlines main.scss if inlineFonts is true */}}
