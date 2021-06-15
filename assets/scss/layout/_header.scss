@@ -86,11 +86,6 @@ $brandHeight: null;
             + #{$fontSize * 2}
         );
     }
-
-    /* Scrolling fix for anchors being hidden below the header */
-    *[id] {
-        scroll-margin-top: var(--header-height);
-    }
 }
 
 @if ($enableHeaderAutoHide and $headerLayoutFlex) {
