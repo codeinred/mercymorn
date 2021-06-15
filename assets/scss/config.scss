@@ -1,3 +1,5 @@
+@import "utils/functions";
+
 {{ with .Site.Params.fontSize | default 16 }}
     $fontSize: {{ . }}px;
 {{ end }}
@@ -134,17 +136,8 @@ $baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
     $headerBackground: {{ . }};
 {{ end }}
 
-{{ if .Site.Params.siteBrandSVG }}
-    $siteBrandSVG: true;
-    $siteBrandSVGWidth: {{ .Site.Params.siteBrandSVGWidth }}px;
-    $siteBrandSVGHeight: {{ .Site.Params.siteBrandSVGHeight }}px;
-    $siteBrandSVGFill: {{ .Site.Params.siteBrandSVGFill }};
-{{ else }}
-    $siteBrandSVG: false;
-    $siteBrandFontSize: {{ .Site.Params.siteBrandFontSize }}em;
-    $siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
-{{ end }}
-
+$siteBrandFontSize: {{ .Site.Params.siteBrandFontSize }}em;
+$siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
 // List Page
 
 {{ if eq .Site.Params.listDatePosition "right" }}
@@ -173,3 +166,6 @@ $greaterWidth: null;
 } @else {
     $greaterWidth: $listWidth;
 }
+
+/* $siteBrandFontSize * {body line-height} */
+$brandHeight: $fontSize * strip-unit($siteBrandFontSize) * 1.618;

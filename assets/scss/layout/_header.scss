@@ -42,39 +42,14 @@
     margin-right: 1em;
 }
 
-$brandHeight: null;
-@if ($siteBrandSVG) {
-    .brand {
-        width: $siteBrandSVGWidth;
-        height: $siteBrandSVGHeight;
-        fill: $siteBrandSVGFill;
-    }
-    $brandHeight: $siteBrandSVGHeight;
-} @else {
-    .brand {
-        font-size: $siteBrandFontSize;
-        color: $siteBrandFontColor;
-        text-decoration: none;
-        &:hover {
-            color: $siteBrandFontColor;
-        }
-    }
-    /* $siteBrandFontSize * {body line-height} */
-    $brandHeight: $fontSize * strip-unit($siteBrandFontSize) * 1.618;
-}
 
-:root {
-    /* This is an approximate calculation, it won't cover all scenarios */
-    --header-height: calc(
-        max(
-            /* brand */
-            #{$brandHeight},
-            /* menu */
-            #{$fontSize * 0.8 * 1.5} /* {.nav font-size} * {.menu line-height} */
-        )
-        /* .header-wrapper top+bottom margin */
-        + #{$fontSize * 2}
-    );
+.brand {
+    font-size: $siteBrandFontSize;
+    color: $siteBrandFontColor;
+    text-decoration: none;
+    &:hover {
+        color: $siteBrandFontColor;
+    }
 }
 
 @if ($enableHeaderAutoHide) {

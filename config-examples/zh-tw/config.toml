@@ -258,7 +258,6 @@ uglyURLs = false
     # 品牌欄（在頂欄內）
 
     # 是否使用 SVG 圖片
-    siteBrandSVG = false
     # 如果是，請將你的 SVG 放到 `SVG.toml` 文
     # 件內，並配置以下項。單位：px。
     siteBrandSVGWidth = 250

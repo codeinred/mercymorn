@@ -5,6 +5,11 @@
     {{ .Content }}
 {{ end }}
 
+
+:root {
+    --header-height: 59.8833px;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -16,11 +21,13 @@ html {
 // The main element needs to be padded to account for the height of the header
 .main {
     display: block;
+    position: relative;
+    top: var(--header-height);
 }
 
 .content {
     max-width: $postWidth;
-    margin: 7rem auto 0;
+    margin: 4rem auto 0;
     padding: 1rem 1rem 0;
     p {
         margin: 0em 0 1em;
