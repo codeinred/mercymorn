@@ -1,0 +1,181 @@
+{{ with .Site.Params.fontSize | default 16 }}
+    $fontSize: {{ . }}px;
+{{ end }}
+{{ with .Site.Params.tabSize | default 4 }}
+    $tabSize: {{ . }};
+{{ end }}
+{{ with .Site.Params.lineHeight | default 2 }}
+    $lineHeight: {{ . }};
+{{ end }}
+
+{{ with .Site.Params.postWidth | default 42 }}
+    $postWidth: {{ . }}em;
+{{ end }}
+{{ with .Site.Params.listWidth | default 42 }}
+    $listWidth: {{ . }}em;
+{{ end }}
+
+{{ with .Site.Params.duration | default 0.5 }}
+    $duration: {{ . }}s;
+{{ end }}
+
+{{ if eq .Site.Params.headerLayout "flex" }}
+    $headerLayoutFlex: true;
+{{ else }}
+    $headerLayoutFlex: false;
+{{ end }}
+
+{{ if .Site.Params.enableHeaderAutoHide }}
+    $enableHeaderAutoHide: true;
+{{ else }}
+    $enableHeaderAutoHide: false;
+{{ end }}
+
+{{ if .Site.Params.enableAnchorAutoHide | default true }}
+    $enableAnchorAutoHide: true;
+{{ else }}
+    $enableAnchorAutoHide: false;
+{{ end }}
+
+{{ with .Site.Params.footnoteReturnLinkIcon }}
+    $footnoteReturnLinkIcon: true;
+{{ else }}
+    $footnoteReturnLinkIcon: false;
+{{ end }}
+
+
+{{ if .Site.Params.enableNavToggle }}
+    $enableNavToggle: true;
+
+    {{ with .Site.Params.navHeight | default "10em" }}
+        $navHeight: {{ . }};
+    {{ end }}
+{{ else }}
+    $enableNavToggle: false;
+{{ end }}
+
+{{ if .Site.Params.displayBackToTopOnMobile }}
+    $displayBackToTopOnMobile: true;
+{{ else }}
+    $displayBackToTopOnMobile: false;
+{{ end }}
+
+{{ if .Site.Params.enableOverflowY }}
+    $enableOverflowY: true;
+{{ else }}
+    $enableOverflowY: false;
+{{ end }}
+
+{{ with .Site.Params.maxHeight | default 20 }}
+    $maxHeight: {{ . }}em;
+{{ end }}
+
+{{ if .Site.Params.enableCopy }}
+    $enableCopy: true;
+{{ else }}
+    $enableCopy: false;
+{{ end }}
+
+{{ if .Site.Params.enableCopyAutoHide }}
+    $enableCopyAutoHide: true;
+{{ else }}
+    $enableCopyAutoHide: false;
+{{ end }}
+
+$baseRelURL: "{{ strings.TrimSuffix (.Site.BaseURL | relURL) "/" }}";
+
+{{ if .Site.Params.enableHighlight }}
+    $enableHighlight: true;
+{{ else }}
+    $enableHighlight: false;
+{{ end }}
+
+// Default Theme
+
+{{ if and .Site.Params.enableDarkMode (eq .Site.Params.defaultTheme "dark") }}
+    $defaultTheme: dark;
+{{ else }}
+    $defaultTheme: light;
+{{ end }}
+
+// Light Mode
+
+{{ with .Site.Params.primaryColorLight | default "220, 90%, 56%" }}
+    {{ $number := (split (replace . "%" "") ", ") }}
+    {{ range $index, $value := $number }}
+        {{ if eq $index 0 }}
+            $primaryColorLightH: {{ $value | int }};
+        {{ end }}
+        {{ if eq $index 1 }}
+            $primaryColorLightS: {{ $value | int }}%;
+        {{ end }}
+        {{ if eq $index 2 }}
+            $primaryColorLightL: {{ $value | int }}%;
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+// Dark Mode
+
+{{ if .Site.Params.enableDarkMode }}
+    {{ with .Site.Params.primaryColorDark | default "201, 65%, 62%" }}
+        {{ $number := (split (replace . "%" "") ", ") }}
+        {{ range $index, $value := $number }}
+            {{ if eq $index 0 }}
+                $primaryColorDarkH: {{ $value | int }};
+            {{ end }}
+            {{ if eq $index 1 }}
+                $primaryColorDarkS: {{ $value | int }}%;
+            {{ end }}
+            {{ if eq $index 2 }}
+                $primaryColorDarkL: {{ $value | int }}%;
+            {{ end }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+// Header
+
+{{ with .Site.Params.headerBackground }}
+    $headerBackground: {{ . }};
+{{ end }}
+
+{{ if .Site.Params.siteBrandSVG }}
+    $siteBrandSVG: true;
+    $siteBrandSVGWidth: {{ .Site.Params.siteBrandSVGWidth }}px;
+    $siteBrandSVGHeight: {{ .Site.Params.siteBrandSVGHeight }}px;
+    $siteBrandSVGFill: {{ .Site.Params.siteBrandSVGFill }};
+{{ else }}
+    $siteBrandSVG: false;
+    $siteBrandFontSize: {{ .Site.Params.siteBrandFontSize }}em;
+    $siteBrandFontColor: {{ .Site.Params.siteBrandFontColor }};
+{{ end }}
+
+// List Page
+
+{{ if eq .Site.Params.listDatePosition "right" }}
+    $listDatePosition: right;
+{{ end }}
+{{ if eq .Site.Params.listDatePosition "left" }}
+    $listDatePosition: left;
+{{ end }}
+
+// Footer
+
+{{ with .Site.Params.iconColor }}
+    $iconColor: {{ . }};
+{{ end }}
+
+{{ if .Site.Params.iconAnimation }}
+    $iconAnimation: true;
+{{ else }}
+    $iconAnimation: false;
+{{ end }}
+
+// Width
+$greaterWidth: null;
+@if ($postWidth > $listWidth) {
+    $greaterWidth: $postWidth;
+} @else {
+    $greaterWidth: $listWidth;
+}

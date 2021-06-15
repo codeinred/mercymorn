@@ -1,23 +1,17 @@
 // This file is meant for crucial layout code that
 // Should be inlined
 
+{{ with resources.Get "scss/config.scss" | resources.ExecuteAsTemplate "" . }}
+    {{ .Content }}
+{{ end }}
+
 html {
-    {{ if .Site.Params.enableSmoothScroll | default true }}
-        scroll-behavior: smooth;
-    {{ end }}
+    scroll-behavior: smooth;
 }
 
 *[id] {
     scroll-margin-top: 6rem;
 }
-
-
-{{ with .Site.Params.lineHeight | default 2 }}
-    $lineHeight: {{ . }};
-{{ end }}
-{{ with .Site.Params.postWidth | default 42 }}
-    $postWidth: {{ . }}em;
-{{ end }}
 
 // The main element needs to be padded to account for the height of the header
 .main {
