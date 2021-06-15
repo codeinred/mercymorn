@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", event => {
 
             const results = opts.results.hits;
 
-            let target = document.querySelector(".main-inner") || document.querySelector("main.home");
+            let target = document.querySelector(".content") || document.querySelector("main.home");
             let replaced = [];
 
             while (target.firstChild) {

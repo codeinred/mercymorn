@@ -27,7 +27,7 @@ window.addEventListener("DOMContentLoaded", event => {
             startSearch(event.state.term, true);
         }
         else if (!event.state && origContent) {
-            let target = document.querySelector(".main-inner");
+            let target = document.querySelector(".content");
             while (target.firstChild) {
                 target.removeChild(target.firstChild);
             }
@@ -114,7 +114,7 @@ window.addEventListener("DOMContentLoaded", event => {
         try {
             let results = index.search(term);
 
-            let target = document.querySelector(".main-inner") || document.querySelector("main.home");
+            let target = document.querySelector(".content") || document.querySelector("main.home");
             let replaced = [];
             while (target.firstChild) {
                 replaced.push(target.firstChild);
