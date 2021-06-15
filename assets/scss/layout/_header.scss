@@ -10,46 +10,36 @@
     margin-bottom: -1em;
 }
 
-@if ($headerLayoutFlex) {
-    .header {
-        position: fixed;
-        top: 0;
-        width: 100%;
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.header-wrapper {
+    border-bottom: 0.15em solid var(--color-accent);
+    background: var(--color-bg);
+    padding: 1em 0;
+    // transition: background $duration;
+}
+@supports ((-webkit-backdrop-filter: blur(0.5em)) or (backdrop-filter: blur(0.5em))) {
+    .header-wrapper{
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background: rbga(var(--color-bg), 0.2);
     }
-    .header-wrapper {
-        border-bottom: 0.15em solid var(--color-accent);
-        background: var(--color-bg);
-        padding: 1em 0;
-        // transition: background $duration;
-    }
-    @supports ((-webkit-backdrop-filter: blur(0.5em)) or (backdrop-filter: blur(0.5em))) {
-        .header-wrapper{
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            background: rbga(var(--color-bg), 0.2);
-        }
-    }
-    .header-inner {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 0 auto;
-        max-width: $postWidth;
-    }
-    .header-inner.list {
-        max-width: $listWidth;
-    }
-    .site-brand {
-        margin-right: 1em;
-    }
-} @else {
-    .header {
-        position: relative;
-        background: $headerBackground;
-    }
-    .site-brand {
-        text-align: center;
-    }
+}
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: $postWidth;
+}
+.header-inner.list {
+    max-width: $listWidth;
+}
+.site-brand {
+    margin-right: 1em;
 }
 
 $brandHeight: null;
@@ -73,23 +63,21 @@ $brandHeight: null;
     $brandHeight: $fontSize * strip-unit($siteBrandFontSize) * 1.618;
 }
 
-@if ($headerLayoutFlex) {
-    :root {
-        /* This is an approximate calculation, it won't cover all scenarios */
-        --header-height: calc(
-            max(
-                /* brand */
-                #{$brandHeight},
-                /* menu */
-                #{$fontSize * 0.8 * 1.5} /* {.nav font-size} * {.menu line-height} */
-            )
-            /* .header-wrapper top+bottom margin */
-            + #{$fontSize * 2}
-        );
-    }
+:root {
+    /* This is an approximate calculation, it won't cover all scenarios */
+    --header-height: calc(
+        max(
+            /* brand */
+            #{$brandHeight},
+            /* menu */
+            #{$fontSize * 0.8 * 1.5} /* {.nav font-size} * {.menu line-height} */
+        )
+        /* .header-wrapper top+bottom margin */
+        + #{$fontSize * 2}
+    );
 }
 
-@if ($enableHeaderAutoHide and $headerLayoutFlex) {
+@if ($enableHeaderAutoHide) {
     .header {
         top: 0;
         transition: top 0.3s ease-in-out;

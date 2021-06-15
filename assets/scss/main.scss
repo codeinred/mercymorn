@@ -54,15 +54,13 @@
 
 @import 'layout/header';
 
-{{ if and (eq .Site.Params.headerLayout "flex") .Site.Params.enableNavToggle }}
+{{ if .Site.Params.enableNavToggle }}
     @import 'components/nav-toggle';
 {{ end }}
 
 // Menu Bar
 
-{{ if or .Site.Params.enableMenu (eq .Site.Params.headerLayout "flex") }}
-    @import 'layout/menu';
-{{ end }}
+@import 'layout/menu';
 
 
 
@@ -234,7 +232,7 @@ $fofPoster: url({{ $fofPoster }});
 
 // Lunr search
 
-{{ if and (eq .Site.Params.headerLayout "flex") (or .Site.Params.enableLunrSearch .Site.Params.enableAlgoliaSearch) }}
+{{ if or .Site.Params.enableLunrSearch .Site.Params.enableAlgoliaSearch }}
     $enableSearch: true;
     @import "components/search";
 {{ else }}

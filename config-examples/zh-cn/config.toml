@@ -247,10 +247,6 @@ uglyURLs = false
     headerBackground = "linear-gradient(90deg, #f795331a 0, #f370551a 15%, #ef4e7b1a 30%, #a166ab1a 44%, #5073b81a 58%, #1098ad1a 72%, #07b39b1a 86%, #6dba821a 100%)"
     # 说明：https://developer.mozilla.org/zh-CN/docs/Web/CSS/background
 
-    # 顶栏布局
-    headerLayout = "flex"
-    # 说明：居中布局（center）或弹性布局（flex）
-
     # 在窄视图下隐藏菜单栏并显示一个按钮？
     enableNavToggle = true
 

@@ -1,19 +1,13 @@
-{{ if or (or (and .IsHome .Site.Params.displayHeaderInHome) (eq .Site.Params.headerLayout "flex")) (and (not .IsHome) .Site.Params.enableHeader) }}
-    <header class="header" data-scroll-header>
-        {{ if eq .Site.Params.headerLayout "flex" }}
-            <div class="header-wrapper">
-                <div class="header-inner {{ cond (or .IsHome (eq (len .Pages) 0)) "single" "list"}}">
-                    {{ template "site-brand" . }}
-                    {{ partial "menu.html" . }}
-                    {{ partial "custom/header.html" . }}
-                </div>
-            </div>
-            {{ partial "components/nav-toggle.html" . }}
-        {{ else }}
+<header class="header" data-scroll-header>
+    <div class="header-wrapper">
+        <div class="header-inner {{ cond (or .IsHome (eq (len .Pages) 0)) "single" "list"}}">
             {{ template "site-brand" . }}
-        {{ end }}
-    </header>
-{{ end }}
+            {{ partial "menu.html" . }}
+            {{ partial "custom/header.html" . }}
+        </div>
+    </div>
+    {{ partial "components/nav-toggle.html" . }}
+</header>
 
 {{ define "site-brand" }}
     <a href="{{ print `/` | relLangURL }}">
