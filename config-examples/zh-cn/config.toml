@@ -235,9 +235,6 @@ uglyURLs = false
     ######################################
     # 顶栏
 
-    # 是否开启
-    enableHeader = true
-
     # 是否自动隐藏
     enableHeaderAutoHide = false
     # 说明：仅对弹性布局的顶栏有效

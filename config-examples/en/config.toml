@@ -250,8 +250,6 @@ uglyURLs = false
     ######################################
     # Header
 
-    enableHeader = true
-
     enableHeaderAutoHide = false
     # Note: works for header layout flex only
 

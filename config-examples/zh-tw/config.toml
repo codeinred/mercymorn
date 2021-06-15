@@ -235,9 +235,6 @@ uglyURLs = false
     ######################################
     # 頂欄
 
-    # 是否開啟
-    enableHeader = true
-
     # 是否自動隱藏
     enableHeaderAutoHide = false
     # 說明：僅對彈性佈局的頂欄有效
