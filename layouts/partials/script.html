@@ -36,10 +36,6 @@
     {{- $scripts = union $scripts (partial "third-party/lunr-search.html" .) -}}
 {{- end -}}
 
-{{- if .Site.Params.enableAlgoliaSearch -}}
-    {{- $scripts = union $scripts (partial "third-party/algolia-search.html" .) -}}
-{{- end -}}
-
 {{- $scripts = union $scripts (slice "js/custom.js") -}}
 
 {{- $processedScripts := slice ("" | resources.FromString "dummy.js") -}}
@@ -58,8 +54,7 @@
 {{- if .Site.Params.enableFingerprint -}}
     {{- $script = $script | resources.Fingerprint -}}
     <script src="{{ $script.RelPermalink }}"
-    {{- if .Site.Params.enableSRI }} integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"{{- end -}}
-    ></script>
+    {{- if .Site.Params.enableSRI }} integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"{{- end -}} defer></script>
 {{- else -}}
-    <script src="{{ $script.RelPermalink }}"></script>
+    <script src="{{ $script.RelPermalink }}" defer></script>
 {{- end }}

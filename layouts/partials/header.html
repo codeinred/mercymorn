@@ -1,5 +1,5 @@
 {{ if or (or (and .IsHome .Site.Params.displayHeaderInHome) (eq .Site.Params.headerLayout "flex")) (and (not .IsHome) .Site.Params.enableHeader) }}
-    <header class="header">
+    <header class="header" data-scroll-header>
         {{ if eq .Site.Params.headerLayout "flex" }}
             <div class="header-wrapper">
                 <div class="header-inner {{ cond (or .IsHome (eq (len .Pages) 0)) "single" "list"}}">
@@ -16,11 +16,10 @@
 {{ end }}
 
 {{ define "site-brand" }}
-    <div class="site-brand">
-        {{ if .Site.Params.siteBrandSVG }}
-            <a href="{{ print `/` | relLangURL }}">{{ partial "utils/icon.html" (dict "$" . "name" "brand") }}</a>
-        {{ else }}
-            <a href="{{ print `/` | relLangURL }}" class="brand">{{ .Site.Title }}</a>
-        {{ end }}
-    </div>
+    <a href="{{ print `/` | relLangURL }}">
+        <div class="site-brand">
+            <div class="site-logo"> </div>
+            <p href="{{ print `/` | relLangURL }}" class="site-title">{{ .Site.Title }}</p>
+        </div>
+    </a>
 {{ end }}
