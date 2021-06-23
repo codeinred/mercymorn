@@ -1,0 +1,39 @@
+{{ $image := resources.Get (.Destination | safeURL) }}
+{{ $path := "" }}
+
+{{/* If the image wasn't found by resources.Get, look in the current page bundle */}}
+{{ if $image }}
+    {{ $path = printf "assets/%s" $image }}
+{{ else }}
+    {{ $image = .Page.Resources.GetMatch .Destination }}
+    {{ if $image }}
+        {{ $path = printf "content/%s%s" .Page.File.Dir .Destination }}
+    {{ else }}
+        {{ errorf "Couldn't find image at either assets/%s or content/%s%s." .Destination .Page.File.Dir .Destination }}
+    {{ end }}
+{{ end }}
+
+{{/* Fingerprint the image so that it can be cached */}}
+{{ $image = $image | fingerprint "md5" }}
+{{ $url := $image.RelPermalink | safeURL }}
+
+{{/* If an image has a prefix matching the path of the current page, we trim off the prefix */}}
+{{ $pathPrefix := (.Page.RelPermalink | safeURL) }}
+{{ if hasPrefix $url $pathPrefix }}
+    {{ $url = substr $url (len $pathPrefix) }}
+{{ end }}
+
+{{/* Get info about the width and height of the image */}}
+{{ $info := imageConfig $path }}
+
+{{/* Read information about any classes from the alt text, then sanitize the alt text */}}
+{{ $classes := delimit (findRE "class\\.([a-z,_,\\-]*) " .Text) " " | replaceRE "class\\." "" }}
+{{ $cleanedText := replaceRE "class\\.([a-z,_,\\-]*) " "" .Text }}
+
+<img
+    src="{{ $url }}"
+    alt="{{ $cleanedText }}"
+    class="{{ $classes }}"
+    width="{{ $info.Width }}"
+    height="{{ $info.Height }}"
+    {{ with .Title }}title="{{ . }}"{{ end }}/>
