@@ -169,3 +169,5 @@ $greaterWidth: null;
 
 /* $siteBrandFontSize * {body line-height} */
 $brandHeight: $fontSize * strip-unit($siteBrandFontSize) * 1.618;
+
+$maxWidth: $fontSize * (strip-unit($greaterWidth) + 5);

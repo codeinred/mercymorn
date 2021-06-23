@@ -40,10 +40,11 @@ img.profile-pic {
         max-width: 100%;
         height: auto;
         clear: both;
+        display: block;
     }
     img.aside {
         float: right;
-        max-width: 30%;
+        max-width: 12rem;
         margin: 0 0 0 0.5em;
     }
     video {
@@ -70,5 +71,14 @@ img.profile-pic {
         height: 1px;
         background: hsl(0, 0, 50%);
         width: 10em;
+    }
+}
+
+@media (max-width: $maxWidth) {
+    .content {
+        img.aside {
+            float: none;
+            margin: 0 auto;
+        }
     }
 }

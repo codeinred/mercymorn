@@ -240,7 +240,6 @@ $fofPoster: url({{ $fofPoster }});
 
 // Responsive
 
-@import "base/max-width";
 :root {
     --max-width: #{$maxWidth};
 }
