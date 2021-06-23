@@ -20,9 +20,7 @@ html {
 
 // The main element needs to be padded to account for the height of the header
 .main {
-    display: block;
-    position: relative;
-    top: var(--header-height);
+    padding-top: var(--header-height);
 }
 
 .content {
