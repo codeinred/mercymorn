@@ -2,12 +2,6 @@
 // https://web.dev/prefers-color-scheme/#reacting-on-dark-mode-changes
 // https://twitter.com/ChromeDevTools/status/1197175265643745282
 
-const userPrefers = localStorage.getItem('theme');
-if (userPrefers === 'dark') {
-    changeModeMeta('dark');
-} else if (userPrefers === 'light') {
-    changeModeMeta('light');
-}
 
 window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {
     changeMode();
@@ -56,10 +50,6 @@ window.addEventListener('storage', function (event) {
 
 function getCurrentTheme() {
     return JSON.parse(window.getComputedStyle(document.documentElement, null).getPropertyValue("--theme-name"));
-}
-
-function changeModeMeta(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
 }
 
 function changeMode() {

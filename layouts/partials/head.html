@@ -2,6 +2,10 @@
     <meta charset="UTF-8" />
 {{- partial "style.html" . }}
 
+{{- with resources.Get "js/user-prefers.js" -}}
+<script>{{- .Content | safeJS -}}</script>
+{{- end -}}
+
     {{ hugo.Generator }}
 
     {{- with .Site.Params.defaultTheme | default "light" -}}
