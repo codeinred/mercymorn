@@ -1,11 +1,24 @@
 {{ $image := resources.Get (.Destination | safeURL) }}
 {{ $path := "" }}
 
+{{ $altDestination := (.Destination | replaceRE "\\.webp" ".jpg") }}
+{{ $hasAlt := true }}
+{{ if eq .Destination $altDestination }}
+    {{ $hasAlt = false }}
+{{ end }}
+{{ $altImage := false }}
+{{ if $hasAlt}}
+    {{ $altImage = resources.Get ($altDestination | safeURL) }}
+{{ end }}
+
 {{/* If the image wasn't found by resources.Get, look in the current page bundle */}}
 {{ if $image }}
     {{ $path = printf "assets/%s" $image }}
 {{ else }}
     {{ $image = .Page.Resources.GetMatch .Destination }}
+    {{ if $hasAlt }}
+        {{ $altImage = .Page.Resources.GetMatch $altDestination }}
+    {{ end }}
     {{ if $image }}
         {{ $path = printf "content/%s%s" .Page.File.Dir .Destination }}
     {{ else }}
@@ -17,10 +30,22 @@
 {{ $image = $image | fingerprint "md5" }}
 {{ $url := $image.RelPermalink | safeURL }}
 
+
+
+{{ $altURL := "" }}
+{{ if $altImage }}
+    {{ $altImage = $altImage | fingerprint "md5" }}
+    {{ $altURL = $altImage.RelPermalink | safeURL }}
+{{ end }}
+
+
 {{/* If an image has a prefix matching the path of the current page, we trim off the prefix */}}
 {{ $pathPrefix := (.Page.RelPermalink | safeURL) }}
 {{ if hasPrefix $url $pathPrefix }}
     {{ $url = substr $url (len $pathPrefix) }}
+    {{ if $altImage }}
+        {{ $altURL = substr $altURL (len $pathPrefix) }}
+    {{ end }}
 {{ end }}
 
 {{/* Get info about the width and height of the image */}}
@@ -36,4 +61,7 @@
     class="{{ $classes }}"
     width="{{ $info.Width }}"
     height="{{ $info.Height }}"
+    {{ if $altImage }}
+        onerror="this.onerror=null;this.src='{{ $altURL }}'"
+    {{ end }}
     {{ with .Title }}title="{{ . }}"{{ end }}/>
