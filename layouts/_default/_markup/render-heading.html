@@ -1,18 +1,16 @@
 {{/* Used to render an anchor link for headings */}}
 
 <h{{ .Level }} id="{{ .Anchor | safeURL }}">
+    <a a href="#{{ .Anchor | safeURL }}">
     {{- if .Page.Site.Params.enableAnchorIcon -}}
         {{- $anchorIcon := .Page.Site.Params.anchorIcon | default "/svg/ui.svg#linkIcon" -}}
-        <a href="#{{ .Anchor | safeURL }}" class="anchor-link">
+        <span class="anchor-link">
             <svg class="icon anchor-icon">
                 <use href="{{ $anchorIcon | safeURL }}" />
             </svg>
-        </a>
+        </span>
     {{- end -}}
 
-    {{- if .Page.Site.Params.headingIsLink | default true -}}
-        <a href="#{{ .Anchor | safeURL }}"> {{ .Text | safeHTML }} </a>
-    {{- else -}}
         {{ .Text | safeHTML }}
-    {{- end -}}
+    </a>
 </h{{ .Level }}>
