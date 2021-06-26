@@ -52,16 +52,31 @@
 {{ $info := imageConfig $path }}
 
 {{/* Read information about any classes from the alt text, then sanitize the alt text */}}
-{{ $classes := delimit (findRE "class\\.([a-z,_,\\-]*) " .Text) " " | replaceRE "class\\." "" }}
-{{ $cleanedText := replaceRE "class\\.([a-z,_,\\-]*) " "" .Text }}
+{{ $class := delimit (findRE "class\\.([a-z,_,\\-]*) " .Text) " " | replaceRE "class\\." "" }}
+{{ $alt := replaceRE "class\\.([a-z,_,\\-]*) " "" .Text | safeHTML }}
 
+{{ $title := $alt }}
+{{ if .Title }}
+    {{ $title = .Title }}
+{{ end }}
+
+{{ if $altImage }}
+<picture>
+    <source srcset="{{ $url }}">
+    <img
+        src="{{ $altURL }}"
+        {{ with $alt }}alt="{{ . }}"{{ end }}
+        {{ with $class }}class="{{ . }}"{{ end }}
+        width="{{ $info.Width }}"
+        height="{{ $info.Height }}"
+        {{ with $title }}title="{{ . }}"{{ end }}/>
+</picture>
+{{ else }}
 <img
     src="{{ $url }}"
-    alt="{{ $cleanedText }}"
-    class="{{ $classes }}"
+    {{ with $alt }}alt="{{ . }}"{{ end }}
+    {{ with $class }}class="{{ . }}"{{ end }}
     width="{{ $info.Width }}"
     height="{{ $info.Height }}"
-    {{ if $altImage }}
-        onerror="this.onerror=null;this.src='{{ $altURL }}'"
-    {{ end }}
-    {{ with .Title }}title="{{ . }}"{{ end }}/>
+    {{ with $title }}title="{{ . }}"{{ end }}/>
+{{ end }}
