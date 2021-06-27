@@ -12,7 +12,12 @@
 {{ define "site-brand" }}
     <a href="{{ print `/` | relLangURL }}">
         <div class="site-brand">
-            <div class="site-logo"> </div>
+            {{ if .Site.Params.headerLogo }}
+                {{ partial "utils/fingerprint_img.html" (dict
+                    "src" .Site.Params.headerLogo
+                    "class" "site-logo"
+                    "alt" (printf "Logo for %s" .Site.Title)) }}
+            {{ end }}
             <p href="{{ print `/` | relLangURL }}" class="site-title">{{ .Site.Title }}</p>
         </div>
     </a>
