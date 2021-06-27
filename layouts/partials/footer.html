@@ -12,7 +12,7 @@
               {{- now.Format "2006" -}}
 
               {{- with .Site.Params.iconBetweenYearAndAuthor -}}
-                  &nbsp;{{- partial "utils/icon.html" (dict "$" $ "name" . "class" "footer-icon") -}}&nbsp;
+                  &nbsp;{{- partial "utils/icon.html" (dict "name" . "class" "footer-icon") -}}&nbsp;
               {{- else -}}
                   &nbsp;
               {{- end -}}
@@ -44,7 +44,7 @@
                         {{- end -}}
 
                         {{- with .Site.Params.busuanziSiteUVIcon -}}
-                            {{- partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.busuanziSiteUVIcon "class" "busuanzi-site-uv") -}}
+                            {{- partial "utils/icon.html" (dict "name" $.Site.Params.busuanziSiteUVIcon "class" "busuanzi-site-uv") -}}
                             &nbsp;
                         {{- end -}}
 
@@ -61,7 +61,7 @@
                         {{- end -}}
 
                         {{- with .Site.Params.busuanziSitePVIcon -}}
-                            {{- partial "utils/icon.html" (dict "$" $ "name" $.Site.Params.busuanziSitePVIcon "class" "busuanzi-site-pv") -}}
+                            {{- partial "utils/icon.html" (dict "name" $.Site.Params.busuanziSitePVIcon "class" "busuanzi-site-pv") -}}
                             &nbsp;
                         {{- end -}}
 

@@ -62,7 +62,7 @@
 
 <!-- Replace `footnoteReturnLinkContents` with icon -->
 {{- with .Site.Params.footnoteReturnLinkIcon -}}
-    {{- $icon := (partial "utils/icon.html" (dict "$" $ "name" . "class" "footnote-icon")) -}}
+    {{- $icon := (partial "utils/icon.html" (dict "name" . "class" "footnote-icon")) -}}
     {{- $replacement := (printf `${1}%s$3` $icon) -}}
 
     {{- $regexPatternfootnoteReturnLinkIcon := `(href="#fnref[^>]+>)([^<]+)(.+)` -}}

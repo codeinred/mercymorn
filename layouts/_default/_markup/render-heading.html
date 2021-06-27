@@ -5,7 +5,7 @@
 <h{{ .Level }} id="{{ .Anchor | safeURL }}">
     <a href="#{{ .Anchor | safeURL }}" title='Link to "{{ .Text | safeHTML }}"'>
         <span class="anchor-link">
-            {{- partial "utils/icon.html" (dict "$" $ "name" $anchorIcon "class" "anchor-icon") -}}
+            {{- partial "utils/icon.html" (dict "name" $anchorIcon "class" "anchor-icon") -}}
         </span>
     </a>
     {{ .Text | safeHTML }}
