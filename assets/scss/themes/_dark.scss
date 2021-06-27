@@ -13,8 +13,8 @@
     @include defineColorHSL(--color-bg, 210, 33%, 13%);
     @include defineColorHSL(--color-contrast-lower, 211, 25%, 17%);
     @include defineColorHSL(--color-contrast-low, 212, 15%, 26%);
-    @include defineColorHSL(--color-contrast-medium, 215, 6%, 58%);
-    @include defineColorHSL(--color-contrast-high, 220, 5%, 89%);
+    @include defineColorHSL(--color-contrast-medium, 215, 6%, 60%);
+    @include defineColorHSL(--color-contrast-high, 220, 5%, 90%);
     @include defineColorHSL(--color-contrast-higher, 0, 0%, 100%);
     .theme-icon-light {
         display: none;
