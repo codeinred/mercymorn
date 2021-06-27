@@ -97,3 +97,46 @@ main, footer {
     fill: currentColor;
     display: inline-block;
 }
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    max-width: $postWidth;
+}
+.header-inner.list {
+    max-width: $listWidth;
+}
+.site-brand {
+    margin-right: 1em;
+    margin-top: -1em;
+    margin-bottom: -1em;
+}
+
+.brand {
+    font-size: $siteBrandFontSize;
+    color: $siteBrandFontColor;
+    text-decoration: none;
+    &:hover {
+        color: $siteBrandFontColor;
+    }
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.header-wrapper {
+    border-bottom: 0.15em solid var(--color-accent);
+    background: var(--color-bg);
+    padding: 1em 0;
+    // transition: background $duration;
+}
+
+// Group the logo and the title together in a flex box
+.site-brand {
+    display: flex;
+    align-items: center;
+}

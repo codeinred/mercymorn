@@ -2,53 +2,12 @@
     z-index: 3;
 }
 
-// Group the logo and the title together in a flex box
-.site-brand {
-    display: flex;
-    align-items: center;
-    margin-top: -1em;
-    margin-bottom: -1em;
-}
 
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-.header-wrapper {
-    border-bottom: 0.15em solid var(--color-accent);
-    background: var(--color-bg);
-    padding: 1em 0;
-    // transition: background $duration;
-}
 @supports ((-webkit-backdrop-filter: blur(0.5em)) or (backdrop-filter: blur(0.5em))) {
     .header-wrapper{
         -webkit-backdrop-filter: blur(10px);
         backdrop-filter: blur(10px);
         background: rbga(var(--color-bg), 0.2);
-    }
-}
-.header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto;
-    max-width: $postWidth;
-}
-.header-inner.list {
-    max-width: $listWidth;
-}
-.site-brand {
-    margin-right: 1em;
-}
-
-
-.brand {
-    font-size: $siteBrandFontSize;
-    color: $siteBrandFontColor;
-    text-decoration: none;
-    &:hover {
-        color: $siteBrandFontColor;
     }
 }
 
