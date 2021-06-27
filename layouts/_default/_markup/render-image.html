@@ -1,82 +1,36 @@
-{{ $image := resources.Get (.Destination | safeURL) }}
-{{ $path := "" }}
 
-{{ $altDestination := (.Destination | replaceRE "\\.webp" ".jpg") }}
-{{ $hasAlt := true }}
-{{ if eq .Destination $altDestination }}
-    {{ $hasAlt = false }}
-{{ end }}
-{{ $altImage := false }}
-{{ if $hasAlt}}
-    {{ $altImage = resources.Get ($altDestination | safeURL) }}
-{{ end }}
-
-{{/* If the image wasn't found by resources.Get, look in the current page bundle */}}
-{{ if $image }}
-    {{ $path = printf "assets/%s" $image }}
-{{ else }}
-    {{ $image = .Page.Resources.GetMatch .Destination }}
-    {{ if $hasAlt }}
-        {{ $altImage = .Page.Resources.GetMatch $altDestination }}
-    {{ end }}
-    {{ if $image }}
-        {{ $path = printf "content/%s%s" .Page.File.Dir .Destination }}
-    {{ else }}
-        {{ errorf "Couldn't find image at either assets/%s or content/%s%s." .Destination .Page.File.Dir .Destination }}
-    {{ end }}
-{{ end }}
-
-{{/* Fingerprint the image so that it can be cached */}}
-{{ $image = $image | fingerprint "md5" }}
-{{ $url := $image.RelPermalink | safeURL }}
-
-
-
-{{ $altURL := "" }}
-{{ if $altImage }}
-    {{ $altImage = $altImage | fingerprint "md5" }}
-    {{ $altURL = $altImage.RelPermalink | safeURL }}
-{{ end }}
-
-
-{{/* If an image has a prefix matching the path of the current page, we trim off the prefix */}}
-{{ $pathPrefix := (.Page.RelPermalink | safeURL) }}
-{{ if hasPrefix $url $pathPrefix }}
-    {{ $url = substr $url (len $pathPrefix) }}
-    {{ if $altImage }}
-        {{ $altURL = substr $altURL (len $pathPrefix) }}
-    {{ end }}
-{{ end }}
-
-{{/* Get info about the width and height of the image */}}
-{{ $info := imageConfig $path }}
+{{/* Obtains a fingerprinted image, along with a set of alternative formats (webp, jpg), and the width & height of the image */}}
+{{ $info := partial "utils/picture.html" . }}
 
 {{/* Read information about any classes from the alt text, then sanitize the alt text */}}
 {{ $class := delimit (findRE "class\\.([a-z,_,\\-]*) " .Text) " " | replaceRE "class\\." "" }}
 {{ $alt := replaceRE "class\\.([a-z,_,\\-]*) " "" .Text | safeHTML }}
 
+{{/* If there's no title, set the title to the alt text. */}}
 {{ $title := $alt }}
 {{ if .Title }}
     {{ $title = .Title }}
 {{ end }}
 
-{{ if $altImage }}
+{{ if $info.alt }}
 <picture>
-    <source srcset="{{ $url }}">
+    {{ range $info.alt }}
+        <source srcset="{{ .url }}">
+    {{ end }}
     <img
-        src="{{ $altURL }}"
+        src="{{ $info.url }}"
         {{ with $alt }}alt="{{ . }}"{{ end }}
         {{ with $class }}class="{{ . }}"{{ end }}
-        width="{{ $info.Width }}"
-        height="{{ $info.Height }}"
+        width="{{ $info.width }}"
+        height="{{ $info.height }}"
         {{ with $title }}title="{{ . }}"{{ end }}/>
 </picture>
 {{ else }}
 <img
-    src="{{ $url }}"
+    src="{{ $info.url }}"
     {{ with $alt }}alt="{{ . }}"{{ end }}
     {{ with $class }}class="{{ . }}"{{ end }}
-    width="{{ $info.Width }}"
-    height="{{ $info.Height }}"
+    width="{{ $info.width }}"
+    height="{{ $info.height }}"
     {{ with $title }}title="{{ . }}"{{ end }}/>
 {{ end }}

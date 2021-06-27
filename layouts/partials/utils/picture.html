@@ -1,0 +1,60 @@
+{{ $src := .Destination }}
+{{ $name_parts := split $src "." }}
+{{ $ext := index ($name_parts | last 1) 0 }}
+{{ $name := delimit ($name_parts | first (sub (len $name_parts) 1)) "." }}
+
+{{ $image := resources.Get $src }}
+{{ $path := printf "assets/%s" $src }}
+
+{{ $is_page_resource := false }}
+
+{{/* If the image wasn't found by resources.Get, look in the current page bundle */}}
+{{ if not $image }}
+    {{ $image = .Page.Resources.GetMatch $src }}
+    {{ $is_page_resource = true }}
+
+    {{ if $image }}
+        {{ $path = printf "content/%s%s" .Page.File.Dir $src }}
+    {{ else }}
+        {{ errorf "Couldn't find image at either assets/%s or content/%s%s." $src .Page.File.Dir $src }}
+    {{ end }}
+{{ end }}
+
+{{ $config := imageConfig $path }}
+
+{{ $image = $image | fingerprint "md5" }}
+{{ $url := $image.RelPermalink }}
+
+{{ $pathPrefix := .Page.RelPermalink }}
+{{ $prefix_length := 0 }}
+{{ if hasPrefix $url $pathPrefix }}
+    {{ $prefix_length = len $pathPrefix }}
+{{ end }}
+
+{{ $url = substr $url $prefix_length }}
+
+{{ $sources := (slice) }}
+{{ $page := .Page }}
+{{ range (slice "avif" "webp" "jpg") }}
+    {{ if ne . $ext }}
+        {{ $alt_src := printf "%s.%s" $name . }}
+        {{ $alt_image := false }}
+        {{ if $is_page_resource }}
+            {{ $alt_image = $page.Resources.GetMatch $alt_src }}
+        {{ else }}
+            {{ $alt_image = resources.Get $alt_src }}
+        {{ end }}
+        {{ if $alt_image }}
+            {{ $alt_image = $alt_image | fingerprint "md5" }}
+            {{ $alt_url := substr $alt_image.RelPermalink $prefix_length }}
+            {{ $sources = $sources | append (dict "image" $alt_image "url" $alt_url) }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ return (dict
+    "image" $image
+    "url" $url
+    "alt" $sources
+    "width" ($config.Width | safeHTML)
+    "height" ($config.Height | safeHTML)) }}
