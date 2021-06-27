@@ -1,0 +1,11 @@
+{{ $src := . }}
+
+{{ if $src }}
+    {{ $image := resources.Get $src | fingerprint "md5" }}
+    {{ $url := $image.RelPermalink }}
+
+    <div
+        style="background-image: url('{{ $url }}')"
+        class="site-logo">
+    </div>
+{{ end }}
