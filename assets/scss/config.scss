@@ -21,12 +21,6 @@
     $duration: {{ . }}s;
 {{ end }}
 
-{{ if .Site.Params.enableHeaderAutoHide }}
-    $enableHeaderAutoHide: true;
-{{ else }}
-    $enableHeaderAutoHide: false;
-{{ end }}
-
 {{ if .Site.Params.enableAnchorAutoHide | default true }}
     $enableAnchorAutoHide: true;
 {{ else }}

@@ -10,14 +10,3 @@
         background: rbga(var(--color-bg), 0.2);
     }
 }
-
-@if ($enableHeaderAutoHide) {
-    .header {
-        top: 0;
-        transition: top 0.3s ease-in-out;
-
-        &.hide {
-            top: calc(var(--header-height) * -1);
-        }
-    }
-}

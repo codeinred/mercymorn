@@ -15,24 +15,6 @@ window.addEventListener(
         '--header-height',
         headerHeight
       );
-
-      {{ if .Site.Params.enableHeaderAutoHide }}
-      /**
-       * Auto hide header
-       */
-      let lastScrollY = 0;
-
-      window.addEventListener(
-        'scroll',
-        throttle(() => {
-          window.scrollY > lastScrollY
-            ? header.classList.add('hide')
-            : header.classList.remove('hide');
-
-          lastScrollY = window.scrollY;
-        }, delayTime)
-      );
-      {{ end }}
     }
   },
   { once: true }
