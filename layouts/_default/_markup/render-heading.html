@@ -1,15 +1,12 @@
 {{/* Used to render an anchor link for headings */}}
 
-{{- $anchorIcon := .Page.Site.Params.anchorIcon | default "/svg/ui.svg#linkIcon" -}}
+{{- $anchorIcon := .Page.Site.Params.anchorIcon | default "anchor-icon" -}}
 
 <h{{ .Level }} id="{{ .Anchor | safeURL }}">
     <a href="#{{ .Anchor | safeURL }}" title='Link to "{{ .Text | safeHTML }}"'>
         <span class="anchor-link">
-            <svg class="icon anchor-icon">
-                <use href="{{ $anchorIcon | safeURL }}" />
-            </svg>
+            {{- partial "utils/icon.html" (dict "$" $ "name" $anchorIcon "class" "anchor-icon") -}}
         </span>
     </a>
     {{ .Text | safeHTML }}
-
 </h{{ .Level }}>

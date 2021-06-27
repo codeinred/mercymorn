@@ -1,6 +1,10 @@
 {{- $ := index . "$" -}}
 {{- $name := .name -}}
 {{- $class := .class | default $name -}}
-{{- $icon := index $.Site.Data.SVG $name -}}
 {{- $class := printf "icon %s" $class -}}
-{{- return (replace $icon "icon" $class | safeHTML) -}}
+{{- $source := (resources.Get "/svg/ui.svg" | fingerprint "md5").RelPermalink -}}
+{{- $url := printf "%s#%s" $source $name -}}
+<svg class="{{ $class }}">
+    <use href="{{ $url }}">
+    </use>
+</svg>
